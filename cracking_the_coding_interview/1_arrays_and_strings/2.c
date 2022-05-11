@@ -12,7 +12,7 @@ bool isPermutation_1(const char *first, const char *second)
 
     if (len_first != len_second) return false;
 
-    size_t letter_counts[128];
+    int letter_counts[128];
     for (size_t i = 0; i < len_first; ++i) {
         letter_counts[first[i]]++;
     }
@@ -43,7 +43,7 @@ bool isPermutation_2(const char *first, const char *second)
 
 int main()
 {
-    char first[] = "abc";
+    char first[] = "aabc";
     char second[] = "cab";
 
     if (isPermutation_1(first, second)) {
