@@ -10,7 +10,7 @@ bool isPermutation_1(const char *first, const char *second)
     len_first = strlen(first);
     len_second = strlen(second);
 
-    if (len_first != len_second) return 0;
+    if (len_first != len_second) return false;
 
     size_t letter_counts[128];
     for (size_t i = 0; i < len_first; ++i) {
@@ -18,9 +18,9 @@ bool isPermutation_1(const char *first, const char *second)
     }
     for (size_t i = 0; i < len_second; ++i) {
         letter_counts[second[i]]--;
-        if (letter_counts[second[i]] < 0) return 0;
+        if (letter_counts[second[i]] < 0) return false;
     }
-    return 1;
+    return true;
 }
 
 int cmpfunc(const void *left, const void *right);
@@ -28,7 +28,7 @@ char *sortedString(const char *str);
 
 bool isPermutation_2(const char *first, const char *second)
 {
-    if (strlen(first) != strlen(second)) return 0;
+    if (strlen(first) != strlen(second)) return false;
 
     char *first_sorted = sortedString(first);
     char *second_sorted = sortedString(second);
@@ -38,7 +38,7 @@ bool isPermutation_2(const char *first, const char *second)
     free(first_sorted);
     free(second_sorted);
 
-    return res_strcmp ? 0 : 1;
+    return res_strcmp ? false : true;
 }
 
 int main()

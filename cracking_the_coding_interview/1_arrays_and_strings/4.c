@@ -19,11 +19,11 @@ bool isPermutationOfPalindrome(char *str)
     for (size_t i = 0; i < 128; ++i) {
         if (count_letters[i] == 0) continue;
         if (count_letters[i] % 2) {
-            if (oddFound) return 0;
+            if (oddFound) return false;
             oddFound = 1;
         }
     }
-    return 1;
+    return true;
 }
 
 
