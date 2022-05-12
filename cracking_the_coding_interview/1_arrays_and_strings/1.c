@@ -1,48 +1,39 @@
 #include <stdio.h>
+#include <stddef.h>
+#include <string.h>
+#include <stdbool.h>
 
-unsigned int lenString(const char *string)
+
+/* 
+ * ---- ---- ---- Solution 1 ---- ---- ----
+ */
+bool isUniqueString(const char *string)
 {
-    if (string == NULL) {
-        return 0;
-    }
-    unsigned int res = 0;
-    while (string[res]) {
-        res += 1;
-    }
-    return res;
-}
-
-int isUniqueString(const char *string)
-{
-    /* Find lenght of the string */
-    unsigned int len_str = 0;
-    len_str = lenString(string);
-
-    unsigned int i, j;
-    for(i = 0; i < len_str; ++i) {
-        for(j = i + 1; j < len_str; ++j) {
-            if (string[i] == string[j]) {
-                return 0;
-            }
+    size_t len_str = strlen(string);
+    for (size_t i = 0; i < len_str; ++i) {
+        for (size_t j = i + 1; j < len_str; ++j) {
+            if (string[i] == string[j]) return false;
         }
     }
-    return 1;
+    return true;
 }
 
+/* 
+ * ---- ---- ---- Tests ---- ---- ----
+ */
+bool test(bool (*f)(const char *));
 
-int printRawString(const char *string)
+int main()
 {
-    for (int i = 0; i < lenString(string); ++i) {
-        printf("i: %d | char: %d\n", i, string[i]);
-    }
+    printf("%s\n", test(isUniqueString) ? "OK." : "FAIL.");
+    return 0;
 }
 
 
-int main(int argc, char **argv)
+bool test(bool (*f)(const char *))
 {
-    char test_string[] = "tesr camg";
-    printf("test unique of string %s = %d\n", test_string, isUniqueString(test_string));
-    printRawString(test_string);
-    return 1;
-
+    char test_true[] = "abc";
+    char test_false[] = "abb";
+    return (f(test_true) && ~f(test_false));
 }
+
