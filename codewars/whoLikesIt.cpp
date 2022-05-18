@@ -7,7 +7,6 @@
 std::string likes(const std::vector<std::string> &names)
 {
     size_t count_names = names.size();
-
     if (count_names == 0) {
         return "no one likes this";
     }
@@ -36,9 +35,9 @@ std::string likes(const std::vector<std::string> &names)
 int main()
 {
     printf("%s\n", likes({"Peter"}).c_str());
-    printf("%s\n", likes({"Peter", "Huy"}).c_str());
-    printf("%s\n", likes({"Peter", "Huy", "asdf"}).c_str());
-    printf("%s\n", likes({"Peter", "Huy", "asdf", "pasidf"}).c_str());
+    printf("%s\n", likes({"Peter", "Ann"}).c_str());
+    printf("%s\n", likes({"Peter", "Ann", "Vanomas"}).c_str());
+    printf("%s\n", likes({"Peter", "Aninya", "Vanomas", "Shpak"}).c_str());
     return 1;
 }
 
