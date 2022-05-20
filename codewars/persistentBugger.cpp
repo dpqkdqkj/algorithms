@@ -3,11 +3,10 @@
 
 long long foo(long long n)
 {
-    long long tmp = n;
     long long res = 1;
-    while (tmp > 0) {
-        res = res * (tmp % 10);
-        tmp = tmp / 10;
+    while (n > 0) {
+        res *= (n % 10);
+        n /= 10;
     }
     return res;
 }
@@ -16,10 +15,9 @@ int persistence(long long n)
 {
     if (n < 10) return 0;
 
-    long long tmp = n;
     int res = 0;
-    while (tmp > 9) {
-        tmp = foo(tmp);
+    while (n > 9) {
+        n = foo(n);
         res++;
     }
     return res;
