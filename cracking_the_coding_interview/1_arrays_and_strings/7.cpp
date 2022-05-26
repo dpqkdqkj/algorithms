@@ -103,7 +103,6 @@ int main()
             //printf("i%d j%d = %d ;", i, j, matrix[i][j]);
             //printf("%02d ", matrix[i][j]);
             rotMatrix[k][l] = matrix[i][j];
-            //matrix[k][l] = matrix[i][j];
         }
     }
     
