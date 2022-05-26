@@ -23,23 +23,28 @@ void rotateMat(T *mat, int n)
         for (int j = first_idx; j < last_idx; ++j) {
             int offset = j - first_idx;
             // mat[first_idx][j]
-            T top = *(mat + first_idx*n + j);
+            T *ptop = (mat + first_idx*n + j);
+            T *pleft = (mat + (last_idx - offset)*n + first_idx);
+            T *pbot = (mat + last_idx*n + last_idx-offset);
+            T *pright = (mat + j*n + last_idx);
+
+            T top = *ptop;
 
             // left to top
             // mat[first_idx][j] = mat[last_idx - offset][first_idx]
-            *(mat + first_idx*n + j) = *(mat + (last_idx - offset)*n + first_idx);  
+            *ptop = *pleft;
 
             // bot to left
             // mat[last_idx-offset][first_idx] = mat[last_idx][last_idx-offset]
-            *(mat + (last_idx - offset)*n + first_idx) = *(mat + last_idx*n + last_idx-offset);
+            *pleft = *pbot;
 
             // right to bot
             // mat[last_idx][last_idx-offset] = mat[j][last_idx]
-            *(mat + last_idx*n + last_idx-offset) = *(mat + j*n + last_idx);
+            *pbot = *pright;
 
             // top to right
             // mat[j][last_idx] = top
-            *(mat + j*n + last_idx) = top;
+            *pright = top;
         }
     }
 }
@@ -54,7 +59,7 @@ void rotateMat(T *mat, int n)
 
 int main()
 {
-    int N = 3;
+    int N = 4;
     int matrix[N][N];
     int mat[N];
     
