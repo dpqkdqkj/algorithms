@@ -34,7 +34,8 @@ int solution2(int number)
 int main()
 {
     int testNumber = 1000;
-    std::vector<int> test = getNumbers(testNumber);
+    //std::vector<int> test = getNumbers(testNumber);
+    /*
     if (testNumber < 1001) {
         printf("[ ");
         for (int x: test) {
@@ -42,8 +43,9 @@ int main()
         }
         printf("]\n");
     }
+    */
 
-    printf("sum %d\n", solution1(testNumber));
+    //printf("sum %d\n", solution1(testNumber));
     printf("sum2 %d\n", solution2(testNumber));
 
     return 0;
@@ -66,7 +68,7 @@ std::vector<int> getNumbers(int number)
     return numbers;
 }
 
-int S_n(int a1, int an, int n)
+inline int S_n(int a1, int an, int n)
 {
     return (a1 + an) * n/2;
 }
