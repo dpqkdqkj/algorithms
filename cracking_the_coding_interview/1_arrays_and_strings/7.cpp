@@ -1,53 +1,46 @@
 #include <cstdio>
+#include <iostream>
 
 
 
 template <class T>
 void printMat(T *mat, int size)
 {
-    for (int i = 0; i < size; ++i) {
-        for (int j = 0; j < size; ++j) {
-            printf("%02d ", *(mat + j + i*size));
+    for (int i = 0; i < size; ++i)
+    {
+        for (int j = 0; j < size; ++j)
+        {
+            printf("%02d ", *(mat + i*size + j));
         }
         printf("\n");
-    }
-}
+    };
+};
 
 
 template <class T>
 void rotateMat(T *mat, int n)
 {
-    for (int num_ring = 0; num_ring < n / 2; ++num_ring) {
+    for (int num_ring = 0; num_ring < n/2; ++num_ring)
+    {
         int first_idx = num_ring;
         int last_idx = n - 1 - num_ring;
-        for (int j = first_idx; j < last_idx; ++j) {
+        for (int j = first_idx; j < last_idx; ++j)
+        {
             int offset = j - first_idx;
-            // mat[first_idx][j]
-            T *ptop = (mat + first_idx*n + j);
-            T *pleft = (mat + (last_idx - offset)*n + first_idx);
-            T *pbot = (mat + last_idx*n + last_idx-offset);
-            T *pright = (mat + j*n + last_idx);
 
-            T top = *ptop;
+            T *ptop   = (mat +           first_idx*n + j);                   // mat[first_idx][j]
+            T *pleft  = (mat + (last_idx - offset)*n + first_idx);           // mat[last_idx - offset][first_idx]
+            T *pbot   = (mat +            last_idx*n + (last_idx - offset)); // mat[last_idx][last_idx - offset]
+            T *pright = (mat +                   j*n + last_idx);            // mat[j][last_idx]
 
-            // left to top
-            // mat[first_idx][j] = mat[last_idx - offset][first_idx]
-            *ptop = *pleft;
-
-            // bot to left
-            // mat[last_idx-offset][first_idx] = mat[last_idx][last_idx-offset]
-            *pleft = *pbot;
-
-            // right to bot
-            // mat[last_idx][last_idx-offset] = mat[j][last_idx]
-            *pbot = *pright;
-
-            // top to right
-            // mat[j][last_idx] = top
+            T top   = *ptop;
+            *ptop   = *pleft;
+            *pleft  = *pbot;
+            *pbot   = *pright;
             *pright = top;
         }
-    }
-}
+    };
+};
 /*
     00 01 02 03 04     40 30 20 10 00       
     10 11 12 13 14     41 31 21 11 01      
@@ -111,8 +104,8 @@ int main()
         }
     }
     
-    rotateMat(matrix[0], N);
-    printMat(matrix[0], N);
+    rotateMat<int>(matrix[0], N);
+    printMat<int>(matrix[0], N);
     return 0;
 }
 
