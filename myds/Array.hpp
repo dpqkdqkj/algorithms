@@ -31,14 +31,12 @@ public:
      *
     void operator=(const Array<T>& other) {
         if (data != nullptr) delete [] data;
-
         length = other.length;
         data = new T[length];
         for (int i = 0; i < length; ++i)
             data[i] = other.data[i];
     }
     */
-
     T& operator[](int i) {
         assert(i >= 0 && i < length);
         return data[i];
@@ -74,7 +72,7 @@ Array<T>::Array(const Array<T>& a) {
 
 template<class T>
 Array<T>::~Array() {
-    if (data != nullptr) delete[] data;
+    if (data != nullptr) delete [] data;
 }
 
 } /* namespace ods */
