@@ -1,5 +1,5 @@
-#ifndef ARRAY_H_
-#define ARRAY_H_
+#ifndef ARRAY_HPP_
+#define ARRAY_HPP_
 
 #include <cstddef>  // size_t
 #include <assert.h>  // assert
@@ -76,15 +76,15 @@ const Array<T>& Array<T>::operator=(const Array<T>& other)
     return *this;
 }
 
-template<class T> inline
-T& Array<T>::operator[](size_t i) const
+template<class T>
+inline T& Array<T>::operator[](size_t i) const
 {
     assert(i >= 0 && i < length);
     return data[i];
 }
 
-template<class T> inline
-T* Array<T>::operator+(size_t i) const
+template<class T>
+inline T* Array<T>::operator+(size_t i) const
 {
     /* Operator `+` is necessary to apply the function 
      * `std::copy` and similar. Pointer arithmetic. */
@@ -93,5 +93,5 @@ T* Array<T>::operator+(size_t i) const
 
 
 } /* namespace myds */
-#endif /* ARRAY_H_ */
+#endif /* ARRAY_HPP_ */
 

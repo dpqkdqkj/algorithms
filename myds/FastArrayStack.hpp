@@ -1,5 +1,5 @@
-#ifndef FASTARRAYSTACK_H_
-#define FASTARRAYSTACK_H_
+#ifndef FASTARRAYSTACK_HPP_
+#define FASTARRAYSTACK_HPP_
 
 #include "ArrayStack.hpp"
 
@@ -13,7 +13,7 @@ protected:
     virtual void resize();
 public:
     FastArrayStack();
-    virtual ~FastArrayStack();
+    virtual ~FastArrayStack() {};
 
     virtual void add(size_t i, T x);
     virtual void add(T x) { add(ArrayStack<T>::size(), x); }
@@ -22,9 +22,6 @@ public:
 
 template<class T>
 FastArrayStack<T>::FastArrayStack() : ArrayStack<T>() {}
-
-template<class T>
-FastArrayStack<T>::~FastArrayStack() {}
 
 template<class T>
 void FastArrayStack<T>::resize()
@@ -55,5 +52,5 @@ T FastArrayStack<T>::remove(size_t i)
 
 
 } /* namespace ods */
-#endif /* FASTARRAYSTACK_H_ */
+#endif /* FASTARRAYSTACK_HPP_ */
 

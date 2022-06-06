@@ -1,5 +1,5 @@
-#ifndef ARRAYSTACK_H_
-#define ARRAYSTACK_H_
+#ifndef ARRAYSTACK_HPP_
+#define ARRAYSTACK_HPP_
 
 #include "Array.hpp"
 
@@ -14,7 +14,7 @@ protected:
 public:
     ArrayStack();
     ArrayStack(size_t len);
-    virtual ~ArrayStack();
+    virtual ~ArrayStack() {};
 
     inline size_t size() const { return as_N; };
     inline T get(size_t i) const { return array[i]; };
@@ -36,16 +36,13 @@ ArrayStack<T>::ArrayStack(size_t len) : array(len)
     as_N = 0;
 }
 
-template<class T> inline
-T ArrayStack<T>::set(size_t i, T x)
+template<class T>
+inline T ArrayStack<T>::set(size_t i, T x)
 {
     T y = array[i];
     array[i] = x;
     return y;
 }
-
-template<class T>
-ArrayStack<T>::~ArrayStack() {}
 
 template<class T>
 void ArrayStack<T>::resize()
@@ -79,5 +76,5 @@ T ArrayStack<T>::remove(size_t i)
 
 
 } /* namespace myds */
-#endif /* ARRAYSTACK_H_ */
+#endif /* ARRAYSTACK_HPP_ */
 
