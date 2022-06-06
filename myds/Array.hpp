@@ -3,6 +3,7 @@
 
 #include <cstddef>  // size_t
 #include <assert.h>  // assert
+#include <algorithm>  // max, copy, copy_backward
 
 namespace myds {
 using std::size_t;
@@ -45,8 +46,7 @@ Array<T>::Array(size_t len, T init)
 {
     length = len;
     data = new T[length];
-    for (size_t i = 0; i < length; ++i)
-        data[i] = init;
+    std::fill_n(data, length, init);
 }
     
 template<class T>
@@ -64,15 +64,15 @@ Array<T>::~Array()
 
 template<class T>
 const Array<T>& Array<T>::operator=(const Array<T>& other)
-{   /* If we don't care about semantic traditions
+{
+    /* If we don't care about semantic traditions
      * we can type void return function:
     void operator=(const Array<T>& other) */
     if (data != nullptr)
         delete [] data;
     length = other.length;
     data = new T[length];
-    for (size_t i = 0; i < length; ++i)
-        data[i] = other.data[i];
+    std::copy(other.data, other.data + length, data);
     return *this;
 }
 
@@ -85,8 +85,9 @@ T& Array<T>::operator[](size_t i) const
 
 template<class T> inline
 T* Array<T>::operator+(size_t i) const
-{   /* Operator `+` is necessary to apply the function 
-     * `std::copy` and similar. */
+{
+    /* Operator `+` is necessary to apply the function 
+     * `std::copy` and similar. Pointer arithmetic. */
     return data + i;
 }
 

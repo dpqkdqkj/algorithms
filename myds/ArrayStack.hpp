@@ -1,7 +1,6 @@
 #ifndef ARRAYSTACK_H_
 #define ARRAYSTACK_H_
 
-#include <algorithm>  // max
 #include "Array.hpp"
 
 namespace myds {
