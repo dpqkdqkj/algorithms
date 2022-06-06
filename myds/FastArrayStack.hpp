@@ -51,6 +51,6 @@ T FastArrayStack<T>::remove(size_t i)
 }
 
 
-} /* namespace ods */
+} /* namespace myds */
 #endif /* FASTARRAYSTACK_HPP_ */
 
