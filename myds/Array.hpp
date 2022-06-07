@@ -58,8 +58,7 @@ Array<T>::Array(const Array<T>& other)
 template<class T>
 Array<T>::~Array()
 {
-    if (data != nullptr)
-        delete [] data;
+    delete [] data;
 }
 
 template<class T>
@@ -68,11 +67,10 @@ const Array<T>& Array<T>::operator=(const Array<T>& other)
     /* If we don't care about semantic traditions
      * we can type void return function:
     void operator=(const Array<T>& other) */
-    if (data != nullptr)
-        delete [] data;
+    delete [] data;
     length = other.length;
     data = new T[length];
-    std::copy(other.data, other.data + length, data);
+    std::copy(other.data, other.data + other.length, data);
     return *this;
 }
 
