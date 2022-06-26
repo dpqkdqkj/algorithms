@@ -6,7 +6,11 @@
 namespace myds {
 
 template<class T>
+class DualArrayDeque;
+
+template<class T>
 class ArrayStack {
+    friend class DualArrayDeque<T>;
 protected:
     Array<T> array;
     size_t as_N;
