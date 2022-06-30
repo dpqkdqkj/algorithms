@@ -18,8 +18,8 @@ protected:
 public:
     RootishArrayStack();
     virtual ~RootishArrayStack();
-    int size();
-    T get(int i);
+    int size() const;
+    T get(int i) const;
     T set(int i, T x);
     virtual void add(int i, T x);
     virtual T remove(int i);
@@ -29,12 +29,12 @@ public:
 
 
 template<class T> inline 
-int RootishArrayStack<T>::size() {
+int RootishArrayStack<T>::size() const {
     return n;
 }
 
 template<class T> inline 
-T RootishArrayStack<T>::get(int i) {
+T RootishArrayStack<T>::get(int i) const {
     int b = i2b(i);
     int j = i - b*(b+1)/2;
     return blocks.get(b)[j];
